@@ -9,10 +9,10 @@
 <body>
     <h1>JOGO DA VELHA</h1>
     <div id="buttons-container">
-        <button id="2-players"> 2 Jogadores </button>
+        <button id="players"> 2 Jogadores </button>
         <button id="ai-players">IA</button>
     </div>
-    <div id="container" class="hide">
+    <div id="container-boxes" class="hide">
         <div class="box" id="block-1"></div>
         <div class="box" id="block-2"></div>
         <div class="box" id="block-3"></div>
@@ -24,24 +24,25 @@
         <div class="box" id="block-9"></div>
 
         <div id="placar">
+            <h2>Placar</h2>
             <span class="box-placar">
-                <span id="x-placar">X</span>
+                <span id="x-placar">X</span>:
                 <span id="placar-inicial">0</span>
             </span>
-            <span class="box-placar">
-                <span id="o-placar"></span>
+            <span class="box-placar2">
+                <span id="o-placar"></span>:
                 <span id="placar-inicial2">0</span>
             </span>
         </div>
     </div>
 
     <div class="hide">
-        <div class="x">x</div>
+        <div class="x">X</div>
         <div class="o"></div>
     </div>
 
     <div id="message" class="hide">
-        <p></p>
+        <p>hola</p>
     </div>
     <script src="script.js"></script>
 </body>
