@@ -19,7 +19,7 @@ h1{
     cursor: pointer;
 }
 
-#container{
+#container-boxes{
     display: flex;
     width: 300px;
     margin: 0;

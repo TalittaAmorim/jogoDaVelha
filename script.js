@@ -1,12 +1,12 @@
 let x = document.querySelector(".x");
 let o = document.querySelector(".o");
 let boxes = document.querySelectorAll(".box");
-let buttons = document.querySelectorAll("#buttons-container buttons");
+let buttons = document.querySelectorAll("#buttons-container button");
 let messageContainer = document.querySelector("#message");
 let messageText = document.querySelector("#message p");
 let secondPlayer;
 let players = document.querySelector("#players");
-let ia = document.querySelector("#ai-players");
+let ia = document.querySelector("#ai-player");
 
 // contador de jogadas
 
@@ -33,6 +33,15 @@ for(let i = 0; i < boxes.length; i++){
 
             if(player1 == player2){
                 player1++;
+
+                if(secondPlayer == 'ai-player') {
+
+                    // funçao executar a jogada
+                    computerPlay();
+                    player2++;
+
+                }
+
             }else{
                 player2++;
             }
@@ -43,7 +52,9 @@ for(let i = 0; i < boxes.length; i++){
 
 }
 
+// evento para saber se é 2 players ou ia
 for(let i = 0; i < buttons.length; i++){
+
     buttons[i].addEventListener("click", function() {
 
         secondPlayer = this.getAttribute("id");
@@ -53,7 +64,6 @@ for(let i = 0; i < buttons.length; i++){
         }
 
         setTimeout(function(){
-            
             let containerBoxes = document.querySelector("#container-boxes");
             containerBoxes.classList.remove("hide");
         }, 500);
@@ -142,8 +152,8 @@ function checkVitoria () {
     if(b1.childNodes.length > 0 && b4.childNodes.length > 0 && b7.childNodes.length > 0){
         
         let b1Child = b1.childNodes[0].className;
-        let b4Child = b2.childNodes[0].className;
-        let b7Child = b3.childNodes[0].className;
+        let b4Child = b4.childNodes[0].className;
+        let b7Child = b7.childNodes[0].className;
 
         if(b1Child == 'x' && b4Child == 'x' && b7Child == 'x'){
             // x
@@ -227,6 +237,7 @@ function checkVitoria () {
 
     if(cont == 9){
         console.log("deu velha");
+        declareWinner();
     }
 
 }
@@ -271,4 +282,32 @@ function declareWinner(winner){
 
     }
 
+}
+
+function computerPlay() {
+
+    let cloneO = o.cloneNode(true);
+    cont = 0;
+    preenchido = 0;
+
+    for(let i = 0; i < boxes.length; i++){
+
+        let randomNumber = Math.floor(Math.random() * 5);
+
+        // só preencher se estiver vazio o filho
+        if(boxes[i].childNodes[0] == undefined) {
+            if(randomNumber <= 1){
+                boxes[i].appendChild(cloneO);
+                cont++;
+                break;
+            }
+            // checagem de quantas estao preenchidas;
+            else{
+                preenchido++;
+            }
+        }
+    }
+    if(cont == 0 && preenchido < 9){
+        computerPlay();
+    }
 }
