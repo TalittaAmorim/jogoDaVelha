@@ -24,13 +24,12 @@ for(let i = 0; i < boxes.length; i++){
         // verifica se já x ou o
         if(this.childNodes.length == 0){
             
-            // reutilizar 
+            // reutilizar, pq senao ia ficar reposicionando
             let cloneEl = el.cloneNode(true);
 
             this.appendChild(cloneEl);
 
             // computar a jogada
-
             if(player1 == player2){
                 player1++;
 
@@ -236,8 +235,7 @@ function checkVitoria () {
     }
 
     if(cont == 9){
-        console.log("deu velha");
-        declareWinner();
+        declareWinner("Deu velha");
     }
 
 }
