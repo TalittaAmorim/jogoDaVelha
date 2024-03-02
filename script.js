@@ -14,7 +14,7 @@ let player1 = 0;
 let player2 = 0;
 
 // adicionando eventos no click 
-
+// Funcionamento do esquema com as funçoes auxiliares abaixo
 for(let i = 0; i < boxes.length; i++){
     // alguem clicar na caixa
     boxes[i].addEventListener("click", function(){
@@ -62,6 +62,7 @@ for(let i = 0; i < buttons.length; i++){
             buttons[j].style.display = 'none';
         }
 
+        // Funçao para aparecer o jogo de acordo com o button acionado
         setTimeout(function(){
             let containerBoxes = document.querySelector("#container-boxes");
             containerBoxes.classList.remove("hide");
@@ -294,6 +295,11 @@ function computerPlay() {
 
         // só preencher se estiver vazio o filho
         if(boxes[i].childNodes[0] == undefined) {
+
+//             O computador percorre todas as caixas vazias do jogo da velha.
+// Para cada caixa vazia, ele gera um número aleatório entre 0 e 4.
+// Se o número for 0 ou 1, o computador escolhe essa caixa para preencher com a marcação "O".
+// Se o número for maior que 1, ele não faz nada com essa caixa e passa para a próxima.
             if(randomNumber <= 1){
                 boxes[i].appendChild(cloneO);
                 cont++;
